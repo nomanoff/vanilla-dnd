@@ -13,9 +13,8 @@ const StyledEmpty = styled.div`
   border: ${({ hovered }) => (hovered ? "4px solid #fffcfc" : "none")};
 `;
 
-export function ParentBox({ children, control, id, key }) {
+export function ParentBox({ children, control, id, number }) {
   const [over, setOver] = useState(false);
-  console.log(control);
 
   function dragOver(e) {
     e.preventDefault();
@@ -36,10 +35,15 @@ export function ParentBox({ children, control, id, key }) {
     console.log("This is the Id: " + id);
     setOver(false);
     console.log(e);
+    console.log(id);
+
     control((prevV) => {
-      prevV[`parent${1}`] = false;
-      prevV[`parent${2}`] = false;
-      prevV[`parent${3}`] = false;
+      let prevValues = Object.entries(prevV);
+
+      for (let i = 0; i < prevValues.length; ++i) {
+        prevV[`parent${i + 1}`] = false;
+      }
+
       return {
         ...prevV,
         ["parent" + id]: true,
