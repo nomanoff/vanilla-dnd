@@ -10,7 +10,8 @@ const StyledEmpty = styled.div`
   align-items: center;
   justify-content: center;
   user-select: none;
-  border: ${({ hovered }) => (hovered ? "4px solid #fffcfc" : "none")};
+  border: ${({ hovered }) => (hovered ? "3px dashed #fffcfc" : "none")};
+  border-radius: 10px;
 `;
 
 export function ParentBox({ children, control, id }) {
