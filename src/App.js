@@ -56,21 +56,41 @@ const StyledFill = styled.div`
 `;
 
 function App() {
-  const [hasChild, setHasChild] = useState();
+  const [hasChild, setHasChild] = useState({
+    parent1: true,
+    parent2: false,
+    parent3: false,
+  });
 
   return (
     <StyledCanvas>
       <StyledWrapper>
-        <ParentBox>
+        <ParentBox id="1" control={setHasChild}>
           {/* Take from this and ... */}
-          <ChildBox key="1" id="a">
-            A
-          </ChildBox>
+          {hasChild.parent1 ? (
+            <ChildBox key="1" id="a">
+              A
+            </ChildBox>
+          ) : null}
         </ParentBox>
 
-        <ParentBox>{/* Insert Here for e.g. */}</ParentBox>
+        <ParentBox id="2" control={setHasChild}>
+          {/* Insert Here for e.g. */}
+          {hasChild.parent2 ? (
+            <ChildBox key="1" id="a">
+              A
+            </ChildBox>
+          ) : null}
+        </ParentBox>
 
-        <ParentBox>{/* Or Here ... */}</ParentBox>
+        <ParentBox id="3" control={setHasChild}>
+          {/* Or Here ... */}
+          {hasChild.parent3 ? (
+            <ChildBox key="1" id="a">
+              A
+            </ChildBox>
+          ) : null}
+        </ParentBox>
       </StyledWrapper>
     </StyledCanvas>
   );
