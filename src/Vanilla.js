@@ -13,7 +13,7 @@ const StyledEmpty = styled.div`
   border-radius: 10px;
 `;
 
-export function ParentBox({ children, control, control1, id }) {
+export function ParentBox({ children, control, control1, id, current }) {
   const [over, setOver] = useState(false);
 
   function dragOver(e) {
@@ -37,28 +37,29 @@ export function ParentBox({ children, control, control1, id }) {
     console.log(e);
     console.log(id);
 
-    control((prevV) => {
-      let prevValues = Object.entries(prevV);
+    current === "a"
+      ? control((prevV) => {
+          let prevValues = Object.entries(prevV);
 
-      for (let i = 0; i < prevValues.length; ++i) {
-        prevV[`parent${i + 1}`] = false;
-      }
-      return {
-        ...prevV,
-        ["parent" + id]: true,
-      };
-    });
-    control1((prevV) => {
-      let prevValues = Object.entries(prevV);
+          for (let i = 0; i < prevValues.length; ++i) {
+            prevV[`parent${i + 1}`] = false;
+          }
+          return {
+            ...prevV,
+            ["parent" + id]: true,
+          };
+        })
+      : control1((prevV) => {
+          let prevValues = Object.entries(prevV);
 
-      for (let i = 0; i < prevValues.length; ++i) {
-        prevV[`parent${i + 1}`] = false;
-      }
-      return {
-        ...prevV,
-        ["parent" + id]: true,
-      };
-    });
+          for (let i = 0; i < prevValues.length; ++i) {
+            prevV[`parent${i + 1}`] = false;
+          }
+          return {
+            ...prevV,
+            ["parent" + id]: true,
+          };
+        });
   }
 
   return (
@@ -95,12 +96,14 @@ const invisible = {
   display: "none",
 };
 
-export function ChildBox({ children, id }) {
+export function ChildBox({ children, id, currentChild }) {
   const [start, setStart] = useState(false);
 
-  function dragStart() {
+  function dragStart(e) {
     setTimeout(() => setStart(true), 0);
     console.log("drag start");
+    console.log("This is being dragged: " + id);
+    currentChild(id);
   }
 
   function dragEnd() {

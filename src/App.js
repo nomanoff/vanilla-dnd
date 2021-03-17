@@ -3,6 +3,20 @@ import styled from "styled-components";
 import { ParentBox, ChildBox } from "./Vanilla";
 
 function App() {
+  const [currentDrag, setCurrDrag] = useState("");
+
+  function handleCurrent(current) {
+    setCurrDrag(current);
+  }
+
+  const parentOne = {
+    1: true,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+  };
+
   const [hasChild1, setHasChild1] = useState({
     parent1: true,
     parent2: false,
@@ -21,64 +35,89 @@ function App() {
   return (
     <StyledCanvas>
       <StyledWrapper>
-        <ParentBox id="1" control1={setHasChild2} control={setHasChild1}>
+        <ParentBox
+          id="1"
+          current={currentDrag}
+          control1={setHasChild2}
+          control={setHasChild1}
+        >
           {hasChild1.parent1 && (
-            <ChildBox key="1" id="a">
+            <ChildBox key="1" currentChild={handleCurrent} id="a">
               A
             </ChildBox>
           )}
           {hasChild2.parent1 && (
-            <ChildBox key="2" id="b">
+            <ChildBox key="2" currentChild={handleCurrent} id="b">
               B
             </ChildBox>
           )}
         </ParentBox>
 
-        <ParentBox id="2" control1={setHasChild2} control={setHasChild1}>
+        <ParentBox
+          id="2"
+          current={currentDrag}
+          control1={setHasChild2}
+          control={setHasChild1}
+        >
           {hasChild1.parent2 && (
-            <ChildBox key="1" id="a">
+            <ChildBox key="1" currentChild={handleCurrent} id="a">
               A
             </ChildBox>
           )}
           {hasChild2.parent2 && (
-            <ChildBox key="2" id="b">
+            <ChildBox key="2" currentChild={handleCurrent} id="b">
               B
             </ChildBox>
           )}
         </ParentBox>
 
-        <ParentBox id="3" control1={setHasChild2} control={setHasChild1}>
+        <ParentBox
+          id="3"
+          current={currentDrag}
+          control1={setHasChild2}
+          control={setHasChild1}
+        >
           {hasChild1.parent3 && (
-            <ChildBox key="1" id="a">
+            <ChildBox key="1" currentChild={handleCurrent} id="a">
               A
             </ChildBox>
           )}
           {hasChild2.parent3 && (
-            <ChildBox key="2" id="b">
+            <ChildBox key="2" currentChild={handleCurrent} id="b">
               B
             </ChildBox>
           )}
         </ParentBox>
-        <ParentBox id="4" control1={setHasChild2} control={setHasChild1}>
+        <ParentBox
+          id="4"
+          current={currentDrag}
+          control1={setHasChild2}
+          control={setHasChild1}
+        >
           {hasChild1.parent4 && (
-            <ChildBox key="1" id="a">
+            <ChildBox key="1" currentChild={handleCurrent} id="a">
               A
             </ChildBox>
           )}
           {hasChild2.parent4 && (
-            <ChildBox key="2" id="b">
+            <ChildBox key="2" currentChild={handleCurrent} id="b">
               B
             </ChildBox>
           )}
         </ParentBox>
-        <ParentBox id="5" control1={setHasChild2} control={setHasChild1}>
+        <ParentBox
+          id="5"
+          current={currentDrag}
+          control1={setHasChild2}
+          control={setHasChild1}
+        >
           {hasChild1.parent5 && (
-            <ChildBox key="1" id="a">
+            <ChildBox key="1" currentChild={handleCurrent} id="a">
               A
             </ChildBox>
           )}
           {hasChild2.parent5 && (
-            <ChildBox key="2" id="b">
+            <ChildBox key="2" currentChild={handleCurrent} id="b">
               B
             </ChildBox>
           )}
