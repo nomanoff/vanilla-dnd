@@ -1,6 +1,94 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { ParentBox, ChildBox } from "./Vanilla";
+
+function App() {
+  const [hasChild1, setHasChild1] = useState({
+    parent1: true,
+    parent2: false,
+    parent3: false,
+    parent4: false,
+    parent5: false,
+  });
+  const [hasChild2, setHasChild2] = useState({
+    parent1: false,
+    parent2: true,
+    parent3: false,
+    parent4: false,
+    parent5: false,
+  });
+
+  return (
+    <StyledCanvas>
+      <StyledWrapper>
+        <ParentBox id="1" control1={setHasChild2} control={setHasChild1}>
+          {hasChild1.parent1 && (
+            <ChildBox key="1" id="a">
+              A
+            </ChildBox>
+          )}
+          {hasChild2.parent1 && (
+            <ChildBox key="2" id="b">
+              B
+            </ChildBox>
+          )}
+        </ParentBox>
+
+        <ParentBox id="2" control1={setHasChild2} control={setHasChild1}>
+          {hasChild1.parent2 && (
+            <ChildBox key="1" id="a">
+              A
+            </ChildBox>
+          )}
+          {hasChild2.parent2 && (
+            <ChildBox key="2" id="b">
+              B
+            </ChildBox>
+          )}
+        </ParentBox>
+
+        <ParentBox id="3" control1={setHasChild2} control={setHasChild1}>
+          {hasChild1.parent3 && (
+            <ChildBox key="1" id="a">
+              A
+            </ChildBox>
+          )}
+          {hasChild2.parent3 && (
+            <ChildBox key="2" id="b">
+              B
+            </ChildBox>
+          )}
+        </ParentBox>
+        <ParentBox id="4" control1={setHasChild2} control={setHasChild1}>
+          {hasChild1.parent4 && (
+            <ChildBox key="1" id="a">
+              A
+            </ChildBox>
+          )}
+          {hasChild2.parent4 && (
+            <ChildBox key="2" id="b">
+              B
+            </ChildBox>
+          )}
+        </ParentBox>
+        <ParentBox id="5" control1={setHasChild2} control={setHasChild1}>
+          {hasChild1.parent5 && (
+            <ChildBox key="1" id="a">
+              A
+            </ChildBox>
+          )}
+          {hasChild2.parent5 && (
+            <ChildBox key="2" id="b">
+              B
+            </ChildBox>
+          )}
+        </ParentBox>
+      </StyledWrapper>
+    </StyledCanvas>
+  );
+}
+
+export default App;
 
 const StyledCanvas = styled.div`
   background: #e76f51;
@@ -27,59 +115,3 @@ const StyledWrapper = styled.div`
   grid-template-columns: 200px 200px 200px 200px 200px;
   grid-template-rows: 200px 200px 200px 200px 200px;
 `;
-
-function App() {
-  const [hasChild, setHasChild] = useState({
-    parent1: true,
-    parent2: false,
-    parent3: false,
-    parent4: false,
-    parent5: false,
-  });
-
-  return (
-    <StyledCanvas>
-      <StyledWrapper>
-        <ParentBox id="1" number={hasChild} control={setHasChild}>
-          {hasChild.parent1 && (
-            <ChildBox key="1" id="a">
-              A
-            </ChildBox>
-          )}
-        </ParentBox>
-
-        <ParentBox id="2" control={setHasChild}>
-          {hasChild.parent2 && (
-            <ChildBox key="1" id="a">
-              A
-            </ChildBox>
-          )}
-        </ParentBox>
-
-        <ParentBox id="3" control={setHasChild}>
-          {hasChild.parent3 && (
-            <ChildBox key="1" id="a">
-              A
-            </ChildBox>
-          )}
-        </ParentBox>
-        <ParentBox id="4" control={setHasChild}>
-          {hasChild.parent4 && (
-            <ChildBox key="1" id="a">
-              A
-            </ChildBox>
-          )}
-        </ParentBox>
-        <ParentBox id="5" control={setHasChild}>
-          {hasChild.parent5 && (
-            <ChildBox key="1" id="a">
-              A
-            </ChildBox>
-          )}
-        </ParentBox>
-      </StyledWrapper>
-    </StyledCanvas>
-  );
-}
-
-export default App;

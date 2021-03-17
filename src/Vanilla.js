@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-//Styles of the ParentBox
-
+//Styles of the ParentBoxS
 const StyledEmpty = styled.div`
   height: 150px;
   width: 150px;
@@ -14,7 +13,7 @@ const StyledEmpty = styled.div`
   border-radius: 10px;
 `;
 
-export function ParentBox({ children, control, id }) {
+export function ParentBox({ children, control, control1, id }) {
   const [over, setOver] = useState(false);
 
   function dragOver(e) {
@@ -49,6 +48,17 @@ export function ParentBox({ children, control, id }) {
         ["parent" + id]: true,
       };
     });
+    control1((prevV) => {
+      let prevValues = Object.entries(prevV);
+
+      for (let i = 0; i < prevValues.length; ++i) {
+        prevV[`parent${i + 1}`] = false;
+      }
+      return {
+        ...prevV,
+        ["parent" + id]: true,
+      };
+    });
   }
 
   return (
@@ -66,7 +76,7 @@ export function ParentBox({ children, control, id }) {
 
 const fill = {
   backgroundColor: "#264653",
-  position: "absolute",
+  position: "relative",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -75,8 +85,8 @@ const fill = {
   borderRadius: "10px",
   border: "2px solid #e0e0e0",
   margin: "5px",
-  height: "130px",
-  width: "130px",
+  height: "100%",
+  width: "100%",
   cursor: "pointer",
   userSelect: "none",
 };
@@ -90,7 +100,6 @@ export function ChildBox({ children, id }) {
 
   function dragStart() {
     setTimeout(() => setStart(true), 0);
-
     console.log("drag start");
   }
 
