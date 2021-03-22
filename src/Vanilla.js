@@ -3,14 +3,17 @@ import styled from "styled-components";
 
 //Styles of the ParentBoxS
 const StyledEmpty = styled.div`
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 125px;
   display: flex;
   align-items: center;
+  flex-direction: column;
+  margin: 5px;
+  padding: 4px;
   justify-content: center;
   user-select: none;
   border: ${({ hovered }) => (hovered ? "3px dashed #fffcfc" : "none")};
-  border-radius: 10px;
+  border-radius: 1px;
 `;
 
 export function ParentBox({ children, control, control1, id, current }) {
@@ -76,16 +79,20 @@ export function ParentBox({ children, control, control1, id, current }) {
 }
 
 const fill = {
-  backgroundColor: "#264653",
+  backgroundColor: "#223668",
   position: "relative",
   display: "flex",
   justifyContent: "center",
+  flexDirection: "column",
   alignItems: "center",
-  fontSize: "2rem",
+  fontFamily: "sans-serif",
+  fontSize: "1.05rem",
   color: "#fff",
-  borderRadius: "10px",
+  borderRadius: "0px",
   border: "2px solid #e0e0e0",
-  margin: "5px",
+  borderWidth: "0 12px",
+  borderColor: "#e0e0e0 red #e0e0e0 green",
+  margin: "3px",
   height: "100%",
   width: "100%",
   cursor: "pointer",
