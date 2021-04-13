@@ -16,29 +16,29 @@ const StyledEmpty = styled.div`
   border-radius: 1px;
 `;
 
-export function ParentBox({ children, control, control1, id, current }) {
+export function ParentBox({
+  children,
+  control,
+  control1,
+  id,
+  current,
+  userInOne,
+}) {
   const [over, setOver] = useState(false);
 
   function dragOver(e) {
     e.preventDefault();
-    console.log("drag over");
   }
   function dragEnter(e) {
     e.preventDefault();
     setOver(true);
-    console.log("drag enter");
   }
   function dragLeave() {
     setOver(false);
-    console.log("drag leave");
   }
   function dragDrop(e) {
-    console.log("drag drop");
-
     console.log("This is the Id: " + id);
     setOver(false);
-    console.log(e);
-    console.log(id);
 
     current === "a"
       ? control((prevV) => {
@@ -63,6 +63,8 @@ export function ParentBox({ children, control, control1, id, current }) {
             ["parent" + id]: true,
           };
         });
+
+    console.log(userInOne);
   }
 
   return (
@@ -108,8 +110,6 @@ export function ChildBox({ children, id, currentChild }) {
 
   function dragStart(e) {
     setTimeout(() => setStart(true), 0);
-    console.log("drag start");
-    console.log("This is being dragged: " + id);
     currentChild(id);
   }
 
