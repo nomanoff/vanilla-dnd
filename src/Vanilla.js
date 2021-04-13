@@ -63,8 +63,6 @@ export function ParentBox({
             ["parent" + id]: true,
           };
         });
-
-    console.log(userInOne);
   }
 
   return (
