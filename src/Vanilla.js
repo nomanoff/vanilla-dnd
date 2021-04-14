@@ -16,14 +16,7 @@ const StyledEmpty = styled.div`
   border-radius: 1px;
 `;
 
-export function ParentBox({
-  children,
-  control,
-  control1,
-  id,
-  current,
-  userInOne,
-}) {
+export function ParentBox({ children, id, current, dataManager, data }) {
   const [over, setOver] = useState(false);
 
   function dragOver(e) {
@@ -33,36 +26,25 @@ export function ParentBox({
     e.preventDefault();
     setOver(true);
   }
-  function dragLeave() {
+  function dragLeave(e) {
     setOver(false);
   }
   function dragDrop(e) {
-    console.log("This is the Id: " + id);
     setOver(false);
+    console.log(id, current);
 
-    current === "a"
-      ? control((prevV) => {
-          let prevValues = Object.entries(prevV);
+    const newParent = data.parentBoxes[id];
+    console.log(newParent.children.push(current));
 
-          for (let i = 0; i < prevValues.length; ++i) {
-            prevV[`parent${i + 1}`] = false;
-          }
-          return {
-            ...prevV,
-            ["parent" + id]: true,
-          };
-        })
-      : control1((prevV) => {
-          let prevValues = Object.entries(prevV);
+    const newState = {
+      ...data,
+      parentBoxes: {
+        ...data.parentBoxes,
+        [id]: newParent,
+      },
+    };
 
-          for (let i = 0; i < prevValues.length; ++i) {
-            prevV[`parent${i + 1}`] = false;
-          }
-          return {
-            ...prevV,
-            ["parent" + id]: true,
-          };
-        });
+    dataManager(newState);
   }
 
   return (
@@ -75,6 +57,31 @@ export function ParentBox({
     >
       {children}
     </StyledEmpty>
+  );
+}
+
+export function ChildBox({ children, id, currentChild }) {
+  const [start, setStart] = useState(false);
+
+  function dragStart(e) {
+    setTimeout(() => setStart(true), 0);
+    currentChild(id);
+  }
+
+  function dragEnd() {
+    setStart(false);
+  }
+
+  return (
+    <div
+      style={start ? invisible : fill}
+      id={id}
+      draggable="true"
+      onDragStart={dragStart}
+      onDragEnd={dragEnd}
+    >
+      {children}
+    </div>
   );
 }
 
@@ -102,29 +109,3 @@ const fill = {
 const invisible = {
   display: "none",
 };
-
-export function ChildBox({ children, id, currentChild }) {
-  const [start, setStart] = useState(false);
-
-  function dragStart(e) {
-    setTimeout(() => setStart(true), 0);
-    currentChild(id);
-  }
-
-  function dragEnd() {
-    console.log("drag end");
-    setStart(false);
-  }
-
-  return (
-    <div
-      style={start ? invisible : fill}
-      id={id}
-      draggable="true"
-      onDragStart={dragStart}
-      onDragEnd={dragEnd}
-    >
-      {children}
-    </div>
-  );
-}

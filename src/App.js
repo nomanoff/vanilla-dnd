@@ -1,64 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import PersonIcon from "@material-ui/icons/Person";
 import { ParentBox, ChildBox } from "./Vanilla";
-import { parentData, childData } from "./data";
-import { logDOM } from "@testing-library/dom";
+import { DataContext } from "./data";
 
 function App() {
   const [currentDrag, setCurrDrag] = useState("");
+  const [parentData, setParentData] = useContext(DataContext);
 
   function handleCurrent(current) {
     setCurrDrag(current);
   }
-
-  const [hasChildren, setHasChildren] = useState(parentData.parentBoxes);
-
-  const [hasChild1, setHasChild1] = useState({
-    parent1: true,
-    parent2: false,
-    parent3: false,
-    parent4: false,
-    parent5: false,
-    parent6: false,
-    parent7: false,
-    parent8: false,
-    parent9: false,
-    parent10: false,
-    parent11: false,
-    parent12: false,
-    parent13: false,
-    parent14: false,
-    parent15: false,
-    parent16: false,
-    parent17: false,
-    parent18: false,
-    parent19: false,
-    parent20: false,
-  });
-
-  const [hasChild2, setHasChild2] = useState({
-    parent1: false,
-    parent2: true,
-    parent3: false,
-    parent4: false,
-    parent5: false,
-    parent6: false,
-    parent7: false,
-    parent8: false,
-    parent9: false,
-    parent10: false,
-    parent11: false,
-    parent12: false,
-    parent13: false,
-    parent14: false,
-    parent15: false,
-    parent16: false,
-    parent17: false,
-    parent18: false,
-    parent19: false,
-    parent20: false,
-  });
 
   return (
     <StyledCanvas>
@@ -70,41 +22,18 @@ function App() {
             <ParentBox
               key={parentBox.id}
               id={parentBox.id}
+              data={parentData}
+              dataManager={setParentData}
               current={currentDrag}
-              control={setHasChildren}
             >
-              {parentBox.hasChild && (
-                <ChildBox
-                  key={parentBox.id}
-                  id="a"
-                  currentChild={handleCurrent}
-                >
-                  Users
+              {parentBox.children.map((child, index) => (
+                <ChildBox key={index} id={child} currentChild={handleCurrent}>
+                  {child}
                 </ChildBox>
-              )}
+              ))}
             </ParentBox>
           );
         })}
-
-        {/* <ParentBox
-          id="1"
-          current={currentDrag}
-          control1={setHasChild2}
-          control={setHasChild1}
-        >
-          {hasChild1.parent1 && (
-            <ChildBox key="1" currentChild={handleCurrent} id="a">
-              <StyledPersonIcon />
-              user one
-            </ChildBox>
-          )}
-          {hasChild2.parent1 && (
-            <ChildBox key="2" currentChild={handleCurrent} id="b">
-              <StyledPersonIcon />
-              user two
-            </ChildBox>
-          )}
-        </ParentBox> */}
       </StyledWrapper>
     </StyledCanvas>
   );
