@@ -5,7 +5,7 @@
 
 ## Check out the demo:
 
-### [https://aliadam.me](vanilla-dnd-demo)
+### [vanilla-dnd-demo](vanilla-dnd-demo)
 
 ## How To Run:
 
