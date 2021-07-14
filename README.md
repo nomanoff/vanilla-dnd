@@ -1,4 +1,11 @@
-# Getting Started with Vanilla DnD
+# Vanilla DnD For React Apps
+
+> This is an experimental (future) drag-n-drop library
+> for react applications. It is still in development.
+
+## Check out the demo:
+
+### [https://aliadam.me](vanilla-dnd-demo)
 
 ## How To Run:
 
@@ -9,7 +16,4 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### &copy @nomanoff
+### &copy; @nomanoff
