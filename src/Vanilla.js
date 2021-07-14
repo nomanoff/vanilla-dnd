@@ -21,24 +21,16 @@ export function ParentBox({ children, control, control1, id, current }) {
 
   function dragOver(e) {
     e.preventDefault();
-    console.log("drag over");
   }
   function dragEnter(e) {
     e.preventDefault();
     setOver(true);
-    console.log("drag enter");
   }
   function dragLeave() {
     setOver(false);
-    console.log("drag leave");
   }
   function dragDrop(e) {
-    console.log("drag drop");
-
-    console.log("This is the Id: " + id);
     setOver(false);
-    console.log(e);
-    console.log(id);
 
     current === "a"
       ? control((prevV) => {
@@ -79,7 +71,7 @@ export function ParentBox({ children, control, control1, id, current }) {
 }
 
 const fill = {
-  backgroundColor: "#223668",
+  backgroundColor: "#fca311",
   position: "relative",
   display: "flex",
   justifyContent: "center",
@@ -87,11 +79,9 @@ const fill = {
   alignItems: "center",
   fontFamily: "sans-serif",
   fontSize: "1.05rem",
+  border: "2px solid #fff",
   color: "#fff",
-  borderRadius: "0px",
-  border: "2px solid #e0e0e0",
-  borderWidth: "0 12px",
-  borderColor: "#e0e0e0 red #e0e0e0 green",
+  borderRadius: "5px",
   margin: "3px",
   height: "100%",
   width: "100%",
@@ -108,13 +98,10 @@ export function ChildBox({ children, id, currentChild }) {
 
   function dragStart(e) {
     setTimeout(() => setStart(true), 0);
-    console.log("drag start");
-    console.log("This is being dragged: " + id);
     currentChild(id);
   }
 
   function dragEnd() {
-    console.log("drag end");
     setStart(false);
   }
 

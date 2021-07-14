@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import PersonIcon from "@material-ui/icons/Person";
+import PanToolIcon from "@material-ui/icons/PanTool";
 import { ParentBox, ChildBox } from "./Vanilla";
 
 const StyledCanvas = styled.div`
-  background: #abd8ff;
+  background: #e5e5e5;
   width: 100%;
   height: 99vh;
   display: flex;
@@ -14,25 +14,26 @@ const StyledCanvas = styled.div`
 
 const StyledWrapper = styled.div`
   display: grid;
-  width: 990px;
-  height: 660px;
+  width: 850px;
+  height: 290px;
   background-color: #162043;
   border-radius: 5px;
+  border: 3px solid #fff;
   margin: 0 auto;
-  padding: 5px;
   justify-content: center;
   align-content: center;
-  justify-items: center;
   align-items: center;
+  justify-items: center;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  grid-template-columns: repeat(6, 165px);
-  grid-template-rows: repeat(6, 110px); ;
+  grid-template-columns: repeat(5, 160px);
+  grid-template-rows: repeat(2, 120px); ;
 `;
 
-const StyledPersonIcon = styled(PersonIcon)`
+const StyledPersonIcon = styled(PanToolIcon)`
   && {
     color: white;
-    font-size: 2rem;
+    font-size: 1.7rem;
+    margin-bottom: 2px;
   }
 `;
 
@@ -80,13 +81,13 @@ function App() {
           {hasChild1.parent1 && (
             <ChildBox key="1" currentChild={handleCurrent} id="a">
               <StyledPersonIcon />
-              user one
+              drag me
             </ChildBox>
           )}
           {hasChild2.parent1 && (
             <ChildBox key="2" currentChild={handleCurrent} id="b">
               <StyledPersonIcon />
-              user two
+              me too
             </ChildBox>
           )}
         </ParentBox>
@@ -100,13 +101,13 @@ function App() {
           {hasChild1.parent2 && (
             <ChildBox key="1" currentChild={handleCurrent} id="a">
               <StyledPersonIcon />
-              user one
+              drag me
             </ChildBox>
           )}
           {hasChild2.parent2 && (
             <ChildBox key="2" currentChild={handleCurrent} id="b">
               <StyledPersonIcon />
-              user two
+              me too
             </ChildBox>
           )}
         </ParentBox>
@@ -120,13 +121,13 @@ function App() {
           {hasChild1.parent3 && (
             <ChildBox key="1" currentChild={handleCurrent} id="a">
               <StyledPersonIcon />
-              user one
+              drag me
             </ChildBox>
           )}
           {hasChild2.parent3 && (
             <ChildBox key="2" currentChild={handleCurrent} id="b">
               <StyledPersonIcon />
-              user two
+              me too
             </ChildBox>
           )}
         </ParentBox>
@@ -139,13 +140,13 @@ function App() {
           {hasChild1.parent4 && (
             <ChildBox key="1" currentChild={handleCurrent} id="a">
               <StyledPersonIcon />
-              user one
+              drag me
             </ChildBox>
           )}
           {hasChild2.parent4 && (
             <ChildBox key="2" currentChild={handleCurrent} id="b">
               <StyledPersonIcon />
-              user two
+              me too
             </ChildBox>
           )}
         </ParentBox>
@@ -158,13 +159,13 @@ function App() {
           {hasChild1.parent5 && (
             <ChildBox key="1" currentChild={handleCurrent} id="a">
               <StyledPersonIcon />
-              user one
+              drag me
             </ChildBox>
           )}
           {hasChild2.parent5 && (
             <ChildBox key="2" currentChild={handleCurrent} id="b">
               <StyledPersonIcon />
-              user two
+              me too
             </ChildBox>
           )}
         </ParentBox>
@@ -177,13 +178,13 @@ function App() {
           {hasChild1.parent6 && (
             <ChildBox key="1" currentChild={handleCurrent} id="a">
               <StyledPersonIcon />
-              user one
+              drag me
             </ChildBox>
           )}
           {hasChild2.parent6 && (
             <ChildBox key="2" currentChild={handleCurrent} id="b">
               <StyledPersonIcon />
-              user two
+              me too
             </ChildBox>
           )}
         </ParentBox>
@@ -196,13 +197,13 @@ function App() {
           {hasChild1.parent7 && (
             <ChildBox key="1" currentChild={handleCurrent} id="a">
               <StyledPersonIcon />
-              user one
+              drag me
             </ChildBox>
           )}
           {hasChild2.parent7 && (
             <ChildBox key="2" currentChild={handleCurrent} id="b">
               <StyledPersonIcon />
-              user two
+              me too
             </ChildBox>
           )}
         </ParentBox>
@@ -215,13 +216,13 @@ function App() {
           {hasChild1.parent8 && (
             <ChildBox key="1" currentChild={handleCurrent} id="a">
               <StyledPersonIcon />
-              user one
+              drag me
             </ChildBox>
           )}
           {hasChild2.parent8 && (
             <ChildBox key="2" currentChild={handleCurrent} id="b">
               <StyledPersonIcon />
-              user two
+              me too
             </ChildBox>
           )}
         </ParentBox>
@@ -234,13 +235,13 @@ function App() {
           {hasChild1.parent9 && (
             <ChildBox key="1" currentChild={handleCurrent} id="a">
               <StyledPersonIcon />
-              user one
+              drag me
             </ChildBox>
           )}
           {hasChild2.parent9 && (
             <ChildBox key="2" currentChild={handleCurrent} id="b">
               <StyledPersonIcon />
-              user two
+              me too
             </ChildBox>
           )}
         </ParentBox>
@@ -253,13 +254,13 @@ function App() {
           {hasChild1.parent10 && (
             <ChildBox key="1" currentChild={handleCurrent} id="a">
               <StyledPersonIcon />
-              user one
+              drag me
             </ChildBox>
           )}
           {hasChild2.parent10 && (
             <ChildBox key="2" currentChild={handleCurrent} id="b">
               <StyledPersonIcon />
-              user two
+              me too
             </ChildBox>
           )}
         </ParentBox>
