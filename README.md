@@ -5,7 +5,7 @@
 
 ## Check out the demo:
 
-### [vanilla-dnd-demo](vanilla-dnd-demo)
+### [https://vanilla-dnd.netlify.app/](vanilla-dnd-demo)
 
 ## How To Run:
 
